@@ -1,5 +1,7 @@
 @extends('master')
 <!-- FORMULARIO TIPO AULA-->
+@section('content')
+
     <div class="form-block container">
         <form action="" method="post" class="row justify-content-center">
             <div class="col-md-6">
@@ -14,3 +16,4 @@
             </div>
         </form>
     </div>
+    @endsection

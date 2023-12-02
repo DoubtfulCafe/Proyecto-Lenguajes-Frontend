@@ -1,5 +1,6 @@
 @extends('master')
     <!-- FORMULARIO EDIFICIO-->
+    @section('content')
     <div class="form-block container">
         <form action="{{route('edificio.nuevo')}}" method="post" class="row justify-content-center">
             @csrf
@@ -36,3 +37,5 @@
         </form>
     </div>
     <script src="{{ asset('js/app.js')}}"></script>
+    
+    @endsection

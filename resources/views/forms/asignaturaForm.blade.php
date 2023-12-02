@@ -1,5 +1,6 @@
 @extends('master')
 <!-- FORMULARIO ASIGNATURA-->
+@section('content')
 <div class="form-block container">
     <form action="{{route('asignatura.nuevo')}}" method="post" id="myForm" class="row justify-content-center">
         @csrf
@@ -43,3 +44,5 @@
     </form>
 </div>
 <script src="{{ asset('js/app.js')}}"></script>
+
+@endsection
