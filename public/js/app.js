@@ -1,10 +1,13 @@
-const select = document.querySelector("#selection");
+const selectInput = document.querySelector("#selection");
 const seleccion = document.querySelector("#seleccionados");
 const removeBtn = document.querySelectorAll(".badge");
+const myForm = document.querySelector("#myForm");
 
+/*
 let selectedElements = [];
 
-select.addEventListener("change", takeValue);
+selectInput.addEventListener("change", takeValue);
+
 function takeValue(e) {
     if (selectedElements.indexOf(e.target.value) !== -1) {
         return 0;
@@ -26,7 +29,7 @@ function takeValue(e) {
     closeBtn.innerHTML = "X";
     closeBtn.addEventListener("click", removeValue);
 
-    name.innerHTML = select.options[e.target.value - 1].text;
+    name.innerHTML = selectInput.options[e.target.value - 1].text;
     selectedElements.push(e.target.value);
 
     newCard.appendChild(name);
@@ -42,3 +45,10 @@ function removeValue(e){
     e.target.parentElement.parentElement.removeChild(e.target.parentElement);
 
 }
+function validate(e){
+    console.log(selectedElements);
+    console.log(selectInput.value);
+    selectInput.value = selectedElements;
+    myForm.submit();
+}
+*/

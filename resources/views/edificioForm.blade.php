@@ -1,20 +1,22 @@
 @extends('master')
     <!-- FORMULARIO EDIFICIO-->
     <div class="form-block container">
-        <form action="" method="post" class="row justify-content-center">
+        <form action="{{route('edificio.nuevo')}}" method="post" class="row justify-content-center">
+            @csrf
+            @method("POST")
             <div class="col-md-6">
                 <h1>Edificio</h1>
                 <div class="mb-3">
                     <label for="nombreEdificio">Nombre Edificio</label>
-                    <input type="text" class="form-control shadow-none" id="nombreEdificio">
+                    <input name="nombre" type="text" class="form-control shadow-none" id="nombreEdificio">
                 </div>
                 <div class="mb-3 ">
-                    <label for="cantidadAula">Cantidad Aula</label>
-                    <input type="text" class="form-control shadow-none" id="cantidadAula">
+                    <label for="cantidadAula">Cantidad Aulas</label>
+                    <input name="cantidad" type="text" class="form-control shadow-none" id="cantidadAula">
                     <div>
                         <div class="mb-3">
                             <label for="aulas">Aulas</label>
-                            <select class="shadow-none form-control" name="aulas" id="selection">
+                            <select class="shadow-none form-control" multiple name="aulas[]" id="selection">
                                 <option value="1">aula1</option>
                                 <option value="2">aula2</option>
                                 <option value="3">aula3</option>

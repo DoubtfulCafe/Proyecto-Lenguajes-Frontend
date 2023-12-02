@@ -1,12 +1,14 @@
 @extends('master')
 <!-- FORMULARIO ASIGNATURA-->
 <div class="form-block container">
-    <form action="" method="post" class="row justify-content-center">
+    <form action="{{route('asignatura.nuevo')}}" method="post" id="myForm" class="row justify-content-center">
+        @csrf
+        @method("POST")
         <div class="col-md-6">
             <h1>Asignatura</h1>
             <div class="mb-3">
                 <label for="nombreAsignatura">Nombre Asignatura</label>
-                <input type="text" class="form-control shadow-none" id="nombreAsignatura">
+                <input type="text" name="nombre" class="form-control shadow-none" id="nombreAsignatura">
             </div>
             <div class="mb-3">
                 <label for="tipoAula">Tipo Aula</label>
@@ -17,13 +19,12 @@
             </div>
             <div class="mb-3">
                 <label for="requisito">Requisito</label>
-                <input type="text" class="form-control shadow-none" id="requisito">
+                <input type="text" class="form-control shadow-none" name="requisito" id="requisito">
             </div>
             <div class="mb-3">
                 <div>
-
                     <label for="secciones">Secciones</label>
-                    <select class="shadow-none form-control" name="tipoAula" id="selection">
+                    <select class="shadow-none form-control" multiple name="secciones[]" id="selection">
                         <option value="1">Seccion1</option>
                         <option value="2">Seccion2</option>
                         <option value="3">Seccion3</option>
@@ -36,7 +37,7 @@
                 </div>
             </div>
             <div class="my-3">
-                <button class="btn btn-form" type="submit">Crear!</button>    
+                <button class="btn btn-form" type="submit" >Crear!</button>    
             </div>
         </div>
     </form>
