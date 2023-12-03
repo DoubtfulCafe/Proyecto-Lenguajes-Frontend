@@ -3,7 +3,9 @@
 @section('content')
 
     <div class="form-block container">
-        <form action="" method="post" class="row justify-content-center">
+        <form action="{{route('tipoAula.nuevo')}}" method="post" class="row justify-content-center">
+            @csrf
+            @method("POST")
             <div class="col-md-6">
                 <h1>Tipo Aula</h1>
                 <div class="mb-3">
@@ -16,4 +18,4 @@
             </div>
         </form>
     </div>
-    @endsection
+    @endsection 

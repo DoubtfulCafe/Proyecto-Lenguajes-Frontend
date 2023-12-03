@@ -7,13 +7,25 @@ use Illuminate\Http\Request;
 class EdificioController extends Controller
 {
     public function nuevo(Request $req) {
-        $nombre = $req->input('nombre');
-        $cantidad = $req->input('cantidad');
-        $aulas = $req->input('aulas');
-        error_log($req);
-  
-        error_log($nombre);
-        error_log($cantidad); 
-        error_log(implode(',', $aulas)); 
+            //Prepare the request elements
+            $data = [
+              'nombre' => $req->input('nombre'),
+              'cantidad' => $req->input('cantidad'),
+              'aulas' => $req->input('aulas'),
+            ];
+            $client = new Client();
+            $url = '';
+            $headers = [
+              'Content-Type' => 'application/json',
+              'Accept' => 'application/json',
+            ];
+      
+            //Structure the request
+            $res = $client->post($url,[
+              'headers' => $headers,
+              'json' => $data,
+            ]);
+      
+            return $res->getBody()->getContents();
       }
 }

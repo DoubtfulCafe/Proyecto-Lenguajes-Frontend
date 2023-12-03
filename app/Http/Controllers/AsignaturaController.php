@@ -7,16 +7,26 @@ use Illuminate\Http\Request;
 class AsignaturaController extends Controller
 {
     public function nuevo(Request $req) {
-      $nombre = $req->input('nombre');
-      $tipoAula = $req->input('tipoAula');
-      $requisito = $req->input('requisito');
-      $secciones = $req->input('secciones');
-      error_log($req);
-
-      error_log($nombre);
-      error_log($tipoAula);
-      error_log($requisito);
-      error_log(implode(',', $secciones));
-       
+            //Prepare the request elements
+            $data = [
+              'nombre' => $req->input('nombre'),
+              'tipoAula' => $req->input('tipoAula'),
+              'requisito' => $req->input('requisito'),
+              'secciones' => $req->input('secciones'),
+            ];
+            $client = new Client();
+            $url = '';
+            $headers = [
+              'Content-Type' => 'application/json',
+              'Accept' => 'application/json',
+            ];
+      
+            //Structure the request
+            $res = $client->post($url,[
+              'headers' => $headers,
+              'json' => $data,
+            ]);
+      
+            return $res->getBody()->getContents();
     }
 }
