@@ -20,6 +20,7 @@ Route::get('/crearAlumno', function () {
 Route::get('/alumno', function () {
     return view('tables.alumnoTabla');
 })->name('alumno.all');
+//Route::get('/alumno', [AlumnoController::class, 'listar'])->name('alumno.all');
 
 Route::post('/nuevoAlumno', [AlumnoController::class, 'nuevo'])->name('alumno.nuevo');
 
@@ -31,6 +32,7 @@ Route::get('/crearAsignatura', function () {
 Route::get('/asignatura', function () {
     return view('tables.asignaturaTabla');
 })->name('asignatura.all');
+//Route::get('/asignatura', [AsignaturaController::class, 'listar'])->name('asignatura.all');
 
 Route::post('/nuevaAsignatura', [AsignaturaController::class, 'nuevo'])->name('asignatura.nuevo');
 
@@ -42,6 +44,7 @@ Route::get('/crearAula', function () {
 Route::get('/aula', function () {
     return view('tables.aulaTabla');
 })->name('aula.all');
+//Route::get('/aula', [AulaController::class, 'listar'])->name('aula.all');
 
 Route::post('/nuevoAula', [AulaController::class, 'nuevo'])->name('aula.nuevo');
 
@@ -53,6 +56,7 @@ Route::get('/crearEdificio', function () {
 Route::get('/edificio', function () {
     return view('tables.edificioTabla');
 })->name('edificio.all');
+//Route::get('/edificio', [EdificioController::class, 'listar'])->name('edificio.all');
 
 Route::post('/nuevoEdificio', [EdificioController::class, 'nuevo'])->name('edificio.nuevo');
 
@@ -64,5 +68,6 @@ Route::get('/crearTipoAula', function () {
 Route::get('/tipoAula', function () {
     return view('tables.tipoAulaTabla');
 })->name('tipoAula.all');
+//Route::get('/tipoAula', [TipoAulaController::class, 'listar'])->name('tipoAula.all');
 
 Route::post('/nuevoTipoAula', [TipoAulaController::class, 'nuevo'])->name('tipoAula.nuevo');
