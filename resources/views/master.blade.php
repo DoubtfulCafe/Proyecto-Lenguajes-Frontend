@@ -44,6 +44,11 @@
                                 Tipos de Aula
                             </a>
                         </li>
+                        <li class="nav-item my-2">
+                            <a class="nav-link active" href="{{route('seccion.all')}}">
+                                Secciones
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </nav>

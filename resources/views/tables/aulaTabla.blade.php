@@ -12,15 +12,22 @@
       <th scope="col">Edificio Perteneciente</th>
       <th scope="col">Tipo Aula</th>
       <th scope="col">Capacidad</th>
+      <th scope="col">Acciones</th>
     </tr>
   </thead>
   <tbody>
+    @foreach ($data as $item)
     <tr>
-      <th scope="row">1</th>
-      <td>B1</td>
-      <td>Laboratorio</td>
-      <td>25</td>
+      <th scope="row">{{$item->codigoaula}}</th>
+      <td>{{$item->edificio}}</td>
+      <td>{{$item->tipoAula}}</td>
+      <td>{{$item->capacidad}}</td>
+      <td><div class="container">
+        <a href="{{route('aula.delete',$item->codigoaula)}}" class="btn btn-sm btn-danger">Eliminar</a>
+        <a href="{{route('aula.update',$item->codigoaula)}}" class="btn btn-sm btn-primary">Actualizar</a>
+      </div></td>
     </tr>
+    @endforeach
   </tbody>
 </table>
 @endsection

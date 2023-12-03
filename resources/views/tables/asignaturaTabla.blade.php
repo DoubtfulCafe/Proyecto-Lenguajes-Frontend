@@ -13,21 +13,28 @@
       <th scope="col">Tipo de Aula</th>
       <th scope="col">Requisito</th>
       <th scope="col">Secciones</th>
+      <th scope="col">Acciones</th>
     </tr>
   </thead>
   <tbody>
+    @foreach ($data as $item)
     <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Laboratorio</td>
-      <td>MM111</td>
+      <th scope="row">{{$item->codigoasignatura}}</th>
+      <td>{{$item->nombreasignatura}}</td>
+      <td>{{$item->tipoAula}}</td>
+      <td>{{$item->asignaturarequisito}}</td>
       <td>
         <ul>
           <li>0900</li>
           <li>0700</li>
         </ul>
       </td>
+      <td><div class="container">
+        <a href="{{route('asignatura.delete',$item->codigoasignatura)}}" class="btn btn-sm btn-danger">Eliminar</a>
+        <a href="{{route('asignatura.update',$item->codigoasignatura)}}" class="btn btn-sm btn-primary">Actualizar</a>
+      </div></td>
     </tr>
+    @endforeach
   </tbody>
 </table>
 @endsection
