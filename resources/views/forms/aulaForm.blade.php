@@ -8,8 +8,12 @@
             <div class="col-md-6">
                 <h1>Aula</h1>
                 <div class="mb-3">
+                    <label for="codigoAula">Codigo Aula</label>
+                    <input name="codigoAula" type="text" class="form-control shadow-none" id="codigoAula">
+                </div>
+                <div class="mb-3">
                     <label for="codigoEdificio">Código Edificio</label>
-                    <input name="codigo" type="text" class="form-control shadow-none" id="codigoEdificio">
+                    <input name="codigoEdificio" type="text" class="form-control shadow-none" id="codigoEdificio">
                 </div>
                 <div class="mb-3">
                     <label for="tipoAula">Tipo Aula</label>

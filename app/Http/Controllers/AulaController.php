@@ -10,42 +10,43 @@ class AulaController extends Controller
     public function nuevo(Request $req) {
             //Prepare the request elements
             $data = [
-              'codigo' => $req->input('codigo'),
-              'tipoAula' => $req->input('tipoAula'),
               'capacidad' => $req->input('capacidad'),
+              'codigoedificio' => $req->input('codigoEdificio'),
+              'idtipoaula' => $req->input('tipoAula'),
+              'codigoaula' => $req->input('codigoAula'),
             ];
             $client = new Client();
-            $url = '';
+            $url = 'localhost:8090/api/aulas/guardar';
             $headers = [
               'Content-Type' => 'application/json',
               'Accept' => 'application/json',
             ];
-      
             //Structure the request
             $res = $client->post($url,[
               'headers' => $headers,
               'json' => $data,
             ]);
-      
-            return $res->getBody()->getContents(); 
-      }
+            
+            //dd($res);
+            return redirect()->route('aula.all');
+          }
 
-      public function listar(){
-        $url = '';
+      public function listar(){ 
+        $url = 'localhost:8090/api/aulas/todos';
         $client = new Client();
 
         $res = $client->get($url);
 
         $data = json_decode($res->getBody()->getContents(), true);
 
-        return view('aulaTabla', compact('data'));
+        return view('tables.aulaTabla', compact('data'));
    }
 
    public function eliminar($id)
    {
      $client = new Client();
  
-     $urlBase = '';
+     $urlBase = 'localhost:8090/api/aulas/eliminar';
      $reqURL = '{$urlBase}/{$id}';
  
      $req = $client->delete($reqURL);
@@ -58,7 +59,7 @@ class AulaController extends Controller
    public function editar($id){
     $client = new Client();
     
-    $urlBase = '';
+    $urlBase = 'localhost:8090/api/aulas/obtener';
     $reqURL = '{$urlBase}/{$id}';
 
     $req = $client->get($reqURL);
@@ -72,11 +73,11 @@ class AulaController extends Controller
    {
      $client = new Client();
  
-     $urlBase = '';
+     $urlBase = 'localhost:8090/api/aulas/actualizar';
      $reqURL = '{$urlBase}/{$id}';
  
      $data = [
-      'codigo' => $req->input('codigo'),
+      'codigoEdificio' => $req->input('codigoEdificio'),
       'tipoAula' => $req->input('tipoAula'),
       'capacidad' => $req->input('capacidad'),
      ];

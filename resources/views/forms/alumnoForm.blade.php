@@ -8,6 +8,10 @@
         <div class="col-md-6">
             <h1>Alumno</h1>
             <div class="mb-3">
+                <label for="numerocuenta">Número de cuenta</label>
+                <input name="numerocuenta" type="text" class="form-control shadow-none" id="numerocuenta">
+            </div>
+            <div class="mb-3">
                 <label for="nombre">Nombre</label>
                 <input name="nombre" type="text" class="form-control shadow-none" id="nombre">
             </div>

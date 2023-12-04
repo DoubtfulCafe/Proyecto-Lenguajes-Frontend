@@ -11,10 +11,11 @@ class TipoAulaController extends Controller
   {
     //Prepare the request elements
     $data = [
+      'codigotipoaula' => $req->input('codigo'),
       'descripcion' => $req->input('descripcion'),
     ];
     $client = new Client();
-    $url = '';
+    $url = 'localhost:8090/api/tipoaulas/guardar';
     $headers = [
       'Content-Type' => 'application/json',
       'Accept' => 'application/json',
@@ -26,25 +27,25 @@ class TipoAulaController extends Controller
       'json' => $data,
     ]);
 
-    return $res->getBody()->getContents();
+    return redirect()->route('tipoaula.all');
   }
 
   public function listar()
   {
-    $url = '';
+    $url = 'localhost:8090/api/tipoaulas/todos';
     $client = new Client();
 
     $res = $client->get($url);
 
     $data = json_decode($res->getBody()->getContents(), true);
 
-    return view('tipoAulaTabla', compact('data'));
+    return view('tables.tipoAulaTabla', compact('data'));
   }
 
   public function editar($id){
     $client = new Client();
     
-    $urlBase = '';
+    $urlBase = 'localhost:8090/api/tipoaulas/obtener';
     $reqURL = '{$urlBase}/{$id}';
 
     $req = $client->get($reqURL);
@@ -58,7 +59,7 @@ class TipoAulaController extends Controller
   {
     $client = new Client();
 
-    $urlBase = '';
+    $urlBase = 'localhost:8090/api/tipoaulas/eliminar';
     $reqURL = '{$urlBase}/{$id}';
 
     $req = $client->delete($reqURL);
@@ -72,7 +73,7 @@ class TipoAulaController extends Controller
   {
     $client = new Client();
 
-    $urlBase = '';
+    $urlBase = 'localhost:8090/api/tipoaulas/actualizar';
     $reqURL = '{$urlBase}/{$id}';
 
     $data = [

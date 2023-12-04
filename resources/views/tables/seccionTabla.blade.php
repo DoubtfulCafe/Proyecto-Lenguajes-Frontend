@@ -18,12 +18,12 @@
   <tbody>
     @foreach ($data as $item)
     <tr>
-      <th scope="row">{{$item->codigoseccion}}</th>
-      <td>{{$item->codigoasignatura}}</td>
-      <td>{{$item->codigoaula}}</td>
-      <td>{{$item->cupos}}</td>
-      <td>{{$item->anio}}</td>
-      <td>{{$item->periodo}}</td>
+      <th scope="row">{{$item['codigoseccion']}}</th>
+      <td>{{$item['codigoasignatura']}}</td>
+      <td>{{$item['codigoaula']}}</td>
+      <td>{{$item['cupos']}}</td>
+      <td>{{$item['anio']}}</td>
+      <td>{{$item['periodo']}}</td>
     </tr>
     @endforeach
   </tbody>

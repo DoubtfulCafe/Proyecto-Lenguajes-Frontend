@@ -11,17 +11,20 @@ class AsignaturaController extends Controller
   {
     //Prepare the request elements
     $data = [
-      'nombre' => $req->input('nombre'),
+      'codigoAsignatura' => $req->input('codigoAsignatura'),
+      'nombreAsignatura' => $req->input('nombre'),
       'tipoAula' => $req->input('tipoAula'),
-      'requisito' => $req->input('requisito'),
-      'secciones' => $req->input('secciones'),
+      'asignaturaRequisito' => $req->input('requisito'),
+      'seccion' => $req->input('secciones'),
     ];
     $client = new Client();
-    $url = '';
+    $url = 'localhost:8090/api/asignaturas/guardar';
     $headers = [
       'Content-Type' => 'application/json',
       'Accept' => 'application/json',
     ];
+    $data['seccion'] = implode('*',$data['seccion']);
+    //dd($data);
 
     //Structure the request
     $res = $client->post($url, [
@@ -29,26 +32,25 @@ class AsignaturaController extends Controller
       'json' => $data,
     ]);
 
-    return $res->getBody()->getContents();
+    return redirect()->route('asignatura.all');
   }
 
   public function listar()
   {
-    $url = '';
+    $url = 'localhost:8090/api/asignaturas/todos';
     $client = new Client();
 
     $res = $client->get($url);
 
     $data = json_decode($res->getBody()->getContents(), true);
-
-    return view('asignaturaTabla', compact('data'));
+    return view('tables.asignaturaTabla', compact('data'));
   }
  
   public function eliminar($id)
   {
     $client = new Client();
 
-    $urlBase = '';
+    $urlBase = 'localhost:8090/api/asignaturas/eliminar';
     $reqURL = '{$urlBase}/{$id}';
 
     $req = $client->delete($reqURL);
@@ -60,7 +62,7 @@ class AsignaturaController extends Controller
   public function editar($id){
     $client = new Client();
     
-    $urlBase = '';
+    $urlBase = 'localhost:8090/api/asignaturas/obtener';
     $reqURL = '{$urlBase}/{$id}';
 
     $req = $client->get($reqURL);
@@ -74,7 +76,7 @@ class AsignaturaController extends Controller
   {
     $client = new Client();
 
-    $urlBase = '';
+    $urlBase = 'localhost:8090/api/asignaturas/actualizar';
     $reqURL = '{$urlBase}/{$id}';
 
     $data = [
@@ -83,8 +85,7 @@ class AsignaturaController extends Controller
       'requisito' => $req->input('requisito'),
       'secciones' => $req->input('secciones'),
     ];
-    $client = new Client();
-    $url = '';
+  
     $headers = [
       'Content-Type' => 'application/json',
       'Accept' => 'application/json',

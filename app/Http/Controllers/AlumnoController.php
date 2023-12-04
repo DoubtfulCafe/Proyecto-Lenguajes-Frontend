@@ -10,11 +10,12 @@ class AlumnoController extends Controller
     public function nuevo(Request $req) {
       //Prepare the request elements
       $data = [
+        'numeroCuenta' => $req->input('numerocuenta'),
         'nombre' => $req->input('nombre'),
         'apellido' => $req->input('apellido'),
       ];
       $client = new Client();
-      $url = '';
+      $url = 'localhost:8090/api/alumnos/guardar';
       $headers = [
         'Content-Type' => 'application/json',
         'Accept' => 'application/json',
@@ -26,24 +27,24 @@ class AlumnoController extends Controller
         'json' => $data,
       ]);
 
-      return $res->getBody()->getContents();
+      $res->getBody()->getContents();
+      return redirect()->route('alumno.all');
     }
 
     public function listar(){
-         $url = '';
+         $url = 'localhost:8090/api/alumnos/todos';
          $client = new Client();
  
          $res = $client->get($url);
  
          $data = json_decode($res->getBody()->getContents(), true);
- 
-         return view('alumnoTabla', compact('data'));
+         return view('tables.alumnoTabla', compact('data'));
     }
 
     public function editar($id){
           $client = new Client();
           
-          $urlBase = '';
+          $urlBase = 'localhost:8090/api/alumnos/obtener';
           $reqURL = '{$urlBase}/{$id}';
 
           $req = $client->get($reqURL);
@@ -56,7 +57,7 @@ class AlumnoController extends Controller
     public function eliminar($id){
       $client = new Client();
           
-      $urlBase = '';
+      $urlBase = 'localhost:8090/api/alumnos/eliminar';
       $reqURL = '{$urlBase}/{$id}';
 
       $req = $client->delete($reqURL);
@@ -64,12 +65,14 @@ class AlumnoController extends Controller
       $res = $client->getBody()->getContents();
 
       $data = json_decode($res, true);
+      return redirect()->route('alumno.all');
+
     }
 
     public function actualizar(Request $req, $id){
       $client = new Client();
           
-      $urlBase = '';
+      $urlBase = 'localhost:8090/api/alumnos/actualizar';
       $reqURL = '{$urlBase}/{$id}';
 
       $data = [

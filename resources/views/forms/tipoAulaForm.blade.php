@@ -9,6 +9,10 @@
             <div class="col-md-6">
                 <h1>Tipo Aula</h1>
                 <div class="mb-3">
+                    <label for="codigo">Código Tipo Aula</label>
+                    <input name="codigo" type="text" class="form-control shadow-none" id="codigo">
+                </div>
+                <div class="mb-3">
                     <label for="Descripcion">Descripcion</label>
                     <input name="descripcion" type="text" class="form-control shadow-none" id="Descripcion">
                 </div>

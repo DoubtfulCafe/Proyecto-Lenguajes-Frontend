@@ -19,19 +19,14 @@
   <tbody>
     @foreach ($data as $item)
     <tr>
-      <th scope="row">{{$item->codigoasignatura}}</th>
-      <td>{{$item->nombreasignatura}}</td>
-      <td>{{$item->tipoAula}}</td>
-      <td>{{$item->asignaturarequisito}}</td>
-      <td>
-        <ul>
-          <li>0900</li>
-          <li>0700</li>
-        </ul>
-      </td>
+      <th scope="row">{{$item['codigoAsignatura']}}</th>
+      <td>{{$item['nombreAsignatura']}}</td>
+      <td>{{$item['tipoAula']}}</td>
+      <td>{{$item['asignaturaRequisito']}}</td>
+      <td>{{$item['seccion']}}</td>
       <td><div class="container">
-        <a href="{{route('asignatura.delete',$item->codigoasignatura)}}" class="btn btn-sm btn-danger">Eliminar</a>
-        <a href="{{route('asignatura.editar',$item->codigoasignatura)}}" class="btn btn-sm btn-primary">Actualizar</a>
+        <a href="{{route('asignatura.delete',$item['codigoAsignatura'])}}" class="btn btn-sm btn-danger">Eliminar</a>
+        <a href="{{route('asignatura.editar',$item['codigoAsignatura'])}}" class="btn btn-sm btn-primary">Actualizar</a>
       </div></td>
     </tr>
     @endforeach

@@ -8,7 +8,8 @@
 <table class="table">
   <thead>
     <tr>
-      <th scope="col">Código</th>
+      <th scope="col">Código Aula</th>
+      <th scope="col">Código Edificio</th>
       <th scope="col">Edificio Perteneciente</th>
       <th scope="col">Tipo Aula</th>
       <th scope="col">Capacidad</th>
@@ -18,13 +19,13 @@
   <tbody>
     @foreach ($data as $item)
     <tr>
-      <th scope="row">{{$item->codigoaula}}</th>
-      <td>{{$item->edificio}}</td>
-      <td>{{$item->tipoAula}}</td>
-      <td>{{$item->capacidad}}</td>
+      <th scope="row">{{$item['codigoaula']}}</th>
+      <td>{{$item['sedificio']}}</td>
+      <td>{{$item['tipoAula']}}</td>
+      <td>{{$item['capacidad']}}</td>
       <td><div class="container">
-        <a href="{{route('aula.delete',$item->codigoaula)}}" class="btn btn-sm btn-danger">Eliminar</a>
-        <a href="{{route('aula.editar',$item->codigoaula)}}" class="btn btn-sm btn-primary">Actualizar</a>
+        <a href="{{route('aula.delete',$item['codigoaula'])}}" class="btn btn-sm btn-danger">Eliminar</a>
+        <a href="{{route('aula.editar',$item['codigoaula'])}}" class="btn btn-sm btn-primary">Actualizar</a>
       </div></td>
     </tr>
     @endforeach

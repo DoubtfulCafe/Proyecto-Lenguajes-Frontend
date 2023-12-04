@@ -16,11 +16,11 @@
   <tbody>
     @foreach ($data as $item)
     <tr>
-      <th scope="row">{{$item->idtipoaula}}</th>
-      <td>{{$item->descripcion}}</td>
+      <th scope="row">{{$item['idtipoaula']}}</th>
+      <td>{{$item['descripcion']}}</td>
       <td><div class="container">
-        <a href="{{route('tipoAula.delete',$item->idtipoaula)}}" class="btn btn-sm btn-danger">Eliminar</a>
-        <a href="{{route('tipoAula.editar',$item->idtipoaula)}}" class="btn btn-sm btn-primary">Actualizar</a>
+        <a href="{{route('tipoAula.delete',$item['idtipoaula'])}}" class="btn btn-sm btn-danger">Eliminar</a>
+        <a href="{{route('tipoAula.editar',$item['idtipoaula'])}}" class="btn btn-sm btn-primary">Actualizar</a>
       </div></td>
     </tr>
     @endforeach

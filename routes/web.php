@@ -23,9 +23,9 @@ Route::get('/alumno', function () {
 })->name('alumno.all');
 */
 Route::get('/alumno', [AlumnoController::class, 'listar'])->name('alumno.all');
-Route::delete('/eliminarAlumno/{id}', [AlumnoController::class, 'eliminar'])->name('alumno.delete');
-Route::put('/actualizarAlumno/{id}', [AlumnoController::class, 'actualizar'])->name('alumno.update');
-Route::get('/editarAlumno/{id}', [AlumnoController::class, 'editar'])->name('alumno.editar');
+Route::delete('/eliminar/{id}', [AlumnoController::class, 'eliminar'])->name('alumno.delete');
+Route::put('/actualizar/{id}', [AlumnoController::class, 'actualizar'])->name('alumno.update');
+Route::get('/obtenerAlumno/{id}', [AlumnoController::class, 'editar'])->name('alumno.editar');
 Route::post('/nuevoAlumno', [AlumnoController::class, 'nuevo'])->name('alumno.nuevo');
 
 

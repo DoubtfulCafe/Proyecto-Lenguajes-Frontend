@@ -8,7 +8,7 @@ use GuzzleHttp\Client;
 class SeccionController extends Controller
 {
     public function listar(){
-        $url = '';
+        $url = 'localhost:8090/api/secciones';
         $client = new Client();
 
         $res = $client->get($url);
