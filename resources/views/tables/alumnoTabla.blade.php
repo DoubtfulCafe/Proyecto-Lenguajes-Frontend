@@ -22,7 +22,7 @@
         <td>{{$item->apellido}}</td>
         <td><div class="container">
           <a href="{{route('alumno.delete',$item->numeroCuenta)}}" class="btn btn-sm btn-danger">Eliminar</a>
-          <a href="{{route('alumno.update',$item->numeroCuenta)}}" class="btn btn-sm btn-primary">Actualizar</a>
+          <a href="{{route('alumno.editar',$item->numeroCuenta)}}" class="btn btn-sm btn-primary">Actualizar</a>
         </div></td>
       </tr>        
       @endforeach

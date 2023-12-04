@@ -9,11 +9,11 @@
                 <h1>Edificio</h1>
                 <div class="mb-3">
                     <label for="nombreEdificio">Nombre Edificio</label>
-                    <input name="nombre" type="text" class="form-control shadow-none" id="nombreEdificio">
+                    <input name="nombre" type="text" value="{{$data->nombre}}" class="form-control shadow-none" id="nombreEdificio">
                 </div>
                 <div class="mb-3 ">
                     <label for="cantidadAula">Cantidad Aulas</label>
-                    <input name="cantidad" type="text" class="form-control shadow-none" id="cantidadAula">
+                    <input name="cantidad" type="text" value="{{$data->cantidadAulas}}" class="form-control shadow-none" id="cantidadAula">
                     <div>
                         <div class="mb-3">
                             <label for="aulas">Aulas</label>

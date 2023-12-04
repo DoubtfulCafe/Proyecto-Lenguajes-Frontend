@@ -55,7 +55,7 @@ class EdificioController extends Controller
     $data = json_decode($res, true);
   }
 
-  public function editar($id){
+  public function editar($id){ 
     $client = new Client();
     
     $urlBase = '';

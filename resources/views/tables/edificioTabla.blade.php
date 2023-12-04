@@ -25,10 +25,10 @@
       </td>
       <td><div class="container">
         <a href="{{route('edificio.delete',$item->codigoEdificio)}}" class="btn btn-sm btn-danger">Eliminar</a>
-        <a href="{{route('edificio.update',$item->codigoEdificio)}}" class="btn btn-sm btn-primary">Actualizar</a>
+        <a href="{{route('edificio.editar',$item->codigoEdificio)}}" class="btn btn-sm btn-primary">Actualizar</a>
       </div></td>
     </tr>
-    @endforeach
+    @endforeach 
   </tbody>
 </table>
 @endsection

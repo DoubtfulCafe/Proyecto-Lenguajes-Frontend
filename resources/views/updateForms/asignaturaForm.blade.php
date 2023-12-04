@@ -9,7 +9,7 @@
             <h1>Asignatura</h1>
             <div class="mb-3">
                 <label for="nombreAsignatura">Nombre Asignatura</label>
-                <input type="text" name="nombre" class="form-control shadow-none" id="nombreAsignatura">
+                <input type="text" value="{{$data->nombreAsignatura}}" name="nombre" class="form-control shadow-none" id="nombreAsignatura">
             </div>
             <div class="mb-3">
                 <label for="tipoAula">Tipo Aula</label>
@@ -20,7 +20,7 @@
             </div>
             <div class="mb-3">
                 <label for="requisito">Requisito</label>
-                <input type="text" class="form-control shadow-none" name="requisito" id="requisito">
+                <input type="text" value="{{$data->requisito}}" class="form-control shadow-none" name="requisito" id="requisito">
             </div>
             <div class="mb-3">
                 <div>

@@ -20,7 +20,7 @@
       <td>{{$item->descripcion}}</td>
       <td><div class="container">
         <a href="{{route('tipoAula.delete',$item->idtipoaula)}}" class="btn btn-sm btn-danger">Eliminar</a>
-        <a href="{{route('tipoAula.update',$item->idtipoaula)}}" class="btn btn-sm btn-primary">Actualizar</a>
+        <a href="{{route('tipoAula.editar',$item->idtipoaula)}}" class="btn btn-sm btn-primary">Actualizar</a>
       </div></td>
     </tr>
     @endforeach

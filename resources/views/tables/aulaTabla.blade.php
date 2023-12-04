@@ -24,7 +24,7 @@
       <td>{{$item->capacidad}}</td>
       <td><div class="container">
         <a href="{{route('aula.delete',$item->codigoaula)}}" class="btn btn-sm btn-danger">Eliminar</a>
-        <a href="{{route('aula.update',$item->codigoaula)}}" class="btn btn-sm btn-primary">Actualizar</a>
+        <a href="{{route('aula.editar',$item->codigoaula)}}" class="btn btn-sm btn-primary">Actualizar</a>
       </div></td>
     </tr>
     @endforeach

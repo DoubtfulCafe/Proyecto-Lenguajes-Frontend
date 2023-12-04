@@ -31,7 +31,7 @@
       </td>
       <td><div class="container">
         <a href="{{route('asignatura.delete',$item->codigoasignatura)}}" class="btn btn-sm btn-danger">Eliminar</a>
-        <a href="{{route('asignatura.update',$item->codigoasignatura)}}" class="btn btn-sm btn-primary">Actualizar</a>
+        <a href="{{route('asignatura.editar',$item->codigoasignatura)}}" class="btn btn-sm btn-primary">Actualizar</a>
       </div></td>
     </tr>
     @endforeach
