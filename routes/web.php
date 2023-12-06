@@ -7,11 +7,15 @@ use App\Http\Controllers\AulaController;
 use App\Http\Controllers\EdificioController;
 use App\Http\Controllers\TipoAulaController;
 use App\Http\Controllers\SeccionController;
+use App\Http\Controllers\DashboardController;
 
 //RUTA PRINCIPAL
+/*
 Route::get('/', function () {
     return view('index');
 })->name('index');
+*/
+Route::get('/', [DashboardController::class, 'conteo'])->name('index');
 
 
 //RUTAS ALUMNO 

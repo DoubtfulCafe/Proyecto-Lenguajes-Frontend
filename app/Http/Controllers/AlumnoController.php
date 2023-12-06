@@ -20,14 +20,13 @@ class AlumnoController extends Controller
         'Content-Type' => 'application/json',
         'Accept' => 'application/json',
       ];
-
+      //dd($data);
       //Structure the request
       $res = $client->post($url,[
         'headers' => $headers,
         'json' => $data,
       ]);
 
-      $res->getBody()->getContents();
       return redirect()->route('alumno.all');
     }
 

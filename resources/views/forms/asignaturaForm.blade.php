@@ -15,32 +15,6 @@
                 <label for="nombreAsignatura">Nombre Asignatura</label>
                 <input type="text" name="nombre" class="form-control shadow-none" id="nombreAsignatura">
             </div>
-            <div class="mb-3">
-                <label for="tipoAula">Tipo Aula</label>
-                <select class="shadow-none form-control" name="tipoAula" id="tipoAula">
-                    @foreach ($data as $item)
-                    <option value="{{$item['idTipoAula']}}">{{$item['descripcion']}}</option>
-                    @endforeach
-                </select>   
-            </div>
-            <div class="mb-3">
-                <label for="requisito">Requisito</label>
-                <input type="text" class="form-control shadow-none" name="requisito" id="requisito">
-            </div>
-            <div class="mb-3">
-                <div>
-                    <label for="secciones">Secciones</label>
-                    <select class="shadow-none form-control" multiple name="secciones[]" id="selection">
-                        <option value="1">Seccion1</option>
-                        <option value="2">Seccion2</option>
-                        <option value="3">Seccion3</option>
-                        <option value="4">Seccion4</option>
-                    </select>
-                </div>
-                <div>
-                    <ul class="list-group" id="seleccionados">
-                    </ul>
-                </div>
             </div>
             <div class="my-3">
                 <button class="btn btn-form" type="submit" >Crear!</button>    

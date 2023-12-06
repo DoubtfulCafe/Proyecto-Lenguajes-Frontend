@@ -13,17 +13,13 @@ class AsignaturaController extends Controller
     $data = [
       'codigoAsignatura' => $req->input('codigoAsignatura'),
       'nombreAsignatura' => $req->input('nombre'),
-      'tipoAula' => $req->input('tipoAula'),
-      'asignaturaRequisito' => $req->input('requisito'),
-      'seccion' => $req->input('secciones'),
     ];
     $client = new Client();
     $url = 'localhost:8090/api/asignaturas/guardar';
     $headers = [
       'Content-Type' => 'application/json',
       'Accept' => 'application/json',
-    ];
-    $data['seccion'] = implode('*',$data['seccion']);
+    ];;
     //dd($data);
 
     //Structure the request
@@ -55,23 +51,12 @@ class AsignaturaController extends Controller
     return redirect()->route('asignatura.all');
 
   }
-
-  public function crearConTipoAulas(){
-    $url = 'localhost:8090/api/tipoaulas/todos';
-    $client = new Client();
-
-    $res = $client->get($url);
-
-    $data = json_decode($res->getBody()->getContents(), true);
-
-    return view('forms.asignaturaForm', compact('data'));
-  }
   
   public function editar($id){
     $client = new Client();
     
     $urlBase = 'localhost:8090/api/asignaturas/obtener';
-    $reqURL = '{$urlBase}/{$id}';
+    $reqURL = "{$urlBase}/{$id}";
 
     $req = $client->get($reqURL);
 
@@ -89,9 +74,6 @@ class AsignaturaController extends Controller
 
     $data = [
       'nombre' => $req->input('nombre'),
-      'tipoAula' => $req->input('tipoAula'),
-      'requisito' => $req->input('requisito'),
-      'secciones' => $req->input('secciones'),
     ];
   
     $headers = [
@@ -105,6 +87,6 @@ class AsignaturaController extends Controller
       'json' => $data,
     ]);
 
-    return $res->getBody()->getContents();
+    return redirect()->route('asignatura.all');
   }
 }

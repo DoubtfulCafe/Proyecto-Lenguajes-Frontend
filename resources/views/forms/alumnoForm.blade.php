@@ -1,4 +1,4 @@
-   @extends('master')
+   @extends('master') 
    <!-- FORMULARIO ALUMNO-->
    @section('content')
    <div class="form-block container">
