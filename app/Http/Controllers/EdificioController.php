@@ -13,8 +13,7 @@ class EdificioController extends Controller
     $data = [
       'codigoEdificio' => $req->input('codigoEdificio'),
       'nombre' => $req->input('nombre'),
-      'cantidad' => $req->input('cantidad'),
-      'aulas' => $req->input('aulas'),
+      'cantidadAulas' => $req->input('cantidad'),
     ];
     $client = new Client();
     $url = 'localhost:8090/api/edificios/guardar';
@@ -44,23 +43,20 @@ class EdificioController extends Controller
   }
   public function eliminar($id)
   {
-    $client = new Client();
+    $client = new Client(); 
 
     $urlBase = 'localhost:8090/api/edificios/eliminar';
-    $reqURL = '{$urlBase}/{$id}';
+    $reqURL = "{$urlBase}/{$id}";
+    $request = $client->delete($reqURL);
+    return redirect()->route('edificio.all');
 
-    $req = $client->delete($reqURL);
-
-    $res = $client->getBody()->getContents();
-
-    $data = json_decode($res, true);
   }
 
   public function editar($id){ 
     $client = new Client();
     
     $urlBase = 'localhost:8090/api/edificios/obtener';
-    $reqURL = '{$urlBase}/{$id}';
+    $reqURL = "{$urlBase}/{$id}";
 
     $req = $client->get($reqURL);
 
@@ -74,15 +70,13 @@ class EdificioController extends Controller
     $client = new Client();
 
     $urlBase = 'localhost:8090/api/edificios/actualizar';
-    $reqURL = '{$urlBase}/{$id}';
+    $reqURL = "{$urlBase}/{$id}";
 
     $data = [
       'nombre' => $req->input('nombre'),
-      'cantidad' => $req->input('cantidad'),
-      'aulas' => $req->input('aulas'),
+      'cantidadAulas' => $req->input('cantidad'),
     ];
     $client = new Client();
-    $url = '';
     $headers = [
       'Content-Type' => 'application/json',
       'Accept' => 'application/json',
@@ -94,6 +88,6 @@ class EdificioController extends Controller
       'json' => $data,
     ]);
 
-    return $res->getBody()->getContents();
+    return redirect()->route('edificio.all');
   }
 }

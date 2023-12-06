@@ -11,7 +11,7 @@ class TipoAulaController extends Controller
   {
     //Prepare the request elements
     $data = [
-      'codigotipoaula' => $req->input('codigo'),
+      'idTipoAula' => $req->input('codigo'),
       'descripcion' => $req->input('descripcion'),
     ];
     $client = new Client();
@@ -27,7 +27,7 @@ class TipoAulaController extends Controller
       'json' => $data,
     ]);
 
-    return redirect()->route('tipoaula.all');
+    return redirect()->route('tipoAula.all');
   }
 
   public function listar()
@@ -46,7 +46,7 @@ class TipoAulaController extends Controller
     $client = new Client();
     
     $urlBase = 'localhost:8090/api/tipoaulas/obtener';
-    $reqURL = '{$urlBase}/{$id}';
+    $reqURL = "{$urlBase}/{$id}";
 
     $req = $client->get($reqURL);
 
@@ -59,28 +59,23 @@ class TipoAulaController extends Controller
   {
     $client = new Client();
 
-    $urlBase = 'localhost:8090/api/tipoaulas/eliminar';
-    $reqURL = '{$urlBase}/{$id}';
-
-    $req = $client->delete($reqURL);
-
-    $res = $client->getBody()->getContents();
-
-    $data = json_decode($res, true);
+    $urlBase = "localhost:8090/api/tipoaulas/eliminar";
+    $reqURL = "{$urlBase}/{$id}";
+    $request = $client->delete($reqURL);
+   return redirect()->route('tipoAula.all');
   }
 
   public function actualizar(Request $req, $id)
   {
     $client = new Client();
 
-    $urlBase = 'localhost:8090/api/tipoaulas/actualizar';
-    $reqURL = '{$urlBase}/{$id}';
+    $urlBase = "localhost:8090/api/tipoaulas/actualizar";
+    $reqURL = "{$urlBase}/{$id}";
 
     $data = [
       'descripcion' => $req->input('descripcion'),
     ];
     $client = new Client();
-    $url = '';
     $headers = [
       'Content-Type' => 'application/json',
       'Accept' => 'application/json',
@@ -92,6 +87,6 @@ class TipoAulaController extends Controller
       'json' => $data,
     ]);
 
-    return $res->getBody()->getContents();
+    return redirect()->route('tipoAula.all');
   }
 }

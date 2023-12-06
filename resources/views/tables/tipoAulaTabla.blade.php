@@ -16,11 +16,15 @@
   <tbody>
     @foreach ($data as $item)
     <tr>
-      <th scope="row">{{$item['idtipoaula']}}</th>
+      <th scope="row">{{$item['idTipoAula']}}</th>
       <td>{{$item['descripcion']}}</td>
       <td><div class="container">
-        <a href="{{route('tipoAula.delete',$item['idtipoaula'])}}" class="btn btn-sm btn-danger">Eliminar</a>
-        <a href="{{route('tipoAula.editar',$item['idtipoaula'])}}" class="btn btn-sm btn-primary">Actualizar</a>
+        <form action="{{ route('tipoAula.delete',$item['idTipoAula']) }}" method="POST">
+          @csrf
+          @method('DELETE')
+          <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+      </form>
+        <a href="{{route('tipoAula.editar',$item['idTipoAula'])}}" class="btn btn-sm btn-primary">Actualizar</a>
       </div></td>
     </tr>
     @endforeach

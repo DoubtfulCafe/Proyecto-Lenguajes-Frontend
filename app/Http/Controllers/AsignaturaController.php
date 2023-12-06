@@ -44,20 +44,16 @@ class AsignaturaController extends Controller
 
     $data = json_decode($res->getBody()->getContents(), true);
     return view('tables.asignaturaTabla', compact('data'));
-  }
+  } 
  
   public function eliminar($id)
   {
     $client = new Client();
 
-    $urlBase = 'localhost:8090/api/asignaturas/eliminar';
-    $reqURL = '{$urlBase}/{$id}';
+    $reqURL = "localhost:8090/api/asignaturas/eliminar/{$id}";
+    $request = $client->delete($reqURL);
+    return redirect()->route('asignatura.all');
 
-    $req = $client->delete($reqURL);
-
-    $res = $client->getBody()->getContents();
-
-    $data = json_decode($res, true);
   }
   public function editar($id){
     $client = new Client();

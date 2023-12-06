@@ -45,7 +45,7 @@ class AlumnoController extends Controller
           $client = new Client();
           
           $urlBase = 'localhost:8090/api/alumnos/obtener';
-          $reqURL = '{$urlBase}/{$id}';
+          $reqURL = "{$urlBase}/{$id}";
 
           $req = $client->get($reqURL);
 
@@ -55,25 +55,18 @@ class AlumnoController extends Controller
     }
 
     public function eliminar($id){
-      $client = new Client();
-          
-      $urlBase = 'localhost:8090/api/alumnos/eliminar';
-      $reqURL = '{$urlBase}/{$id}';
+      $client = new Client();    
+      $reqURL = "localhost:8090/api/alumnos/eliminar/{$id}";
+      $request = $client->delete($reqURL);
 
-      $req = $client->delete($reqURL);
-      
-      $res = $client->getBody()->getContents();
-
-      $data = json_decode($res, true);
       return redirect()->route('alumno.all');
-
-    }
+    } 
 
     public function actualizar(Request $req, $id){
       $client = new Client();
           
       $urlBase = 'localhost:8090/api/alumnos/actualizar';
-      $reqURL = '{$urlBase}/{$id}';
+      $reqURL = "{$urlBase}/{$id}";
 
       $data = [
         'nombre' => $req->input('nombre'),
@@ -92,6 +85,6 @@ class AlumnoController extends Controller
         'json' => $data,
       ]);
 
-      return $res->getBody()->getContents();
+      return redirect()->route('alumno.all');
     }
 }

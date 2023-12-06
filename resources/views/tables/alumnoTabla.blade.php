@@ -10,7 +10,7 @@
       <tr>
         <th scope="col"># Cuenta</th>
         <th scope="col">Nombre</th>
-        <th scope="col">Apellido</th>
+        <th scope="col">Apellido</th> 
         <th scope="col">Acciones</th>
       </tr>
     </thead>
@@ -21,9 +21,14 @@
         <td>{{$item['nombre']}}</td>
         <td>{{$item['apellido']}}</td>
         <td><div class="container">
-          <a href="{{route('alumno.delete',$item['numeroCuenta'])}}" class="btn btn-sm btn-danger">Eliminar</a>
+          <form action="{{ route('alumno.delete',$item['numeroCuenta']) }}" method="POST">
+            @csrf
+            @method('DELETE')
+            <!-- Other form fields go here -->
+            <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+        </form>
           <a href="{{route('alumno.editar',$item['numeroCuenta'])}}" class="btn btn-sm btn-primary">Actualizar</a>
-        </div></td>
+        </div></td> 
       </tr>        
       @endforeach
     </tbody>

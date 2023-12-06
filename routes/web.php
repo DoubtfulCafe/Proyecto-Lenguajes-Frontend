@@ -6,6 +6,7 @@ use App\Http\Controllers\AsignaturaController;
 use App\Http\Controllers\AulaController;
 use App\Http\Controllers\EdificioController;
 use App\Http\Controllers\TipoAulaController;
+use App\Http\Controllers\SeccionController;
 
 //RUTA PRINCIPAL
 Route::get('/', function () {
@@ -13,7 +14,7 @@ Route::get('/', function () {
 })->name('index');
 
 
-//RUTAS ALUMNO
+//RUTAS ALUMNO 
 Route::get('/crearAlumno', function () {
     return view('forms.alumnoForm');
 })->name('alumno.crear');
@@ -27,7 +28,7 @@ Route::delete('/eliminar/{id}', [AlumnoController::class, 'eliminar'])->name('al
 Route::put('/actualizar/{id}', [AlumnoController::class, 'actualizar'])->name('alumno.update');
 Route::get('/obtenerAlumno/{id}', [AlumnoController::class, 'editar'])->name('alumno.editar');
 Route::post('/nuevoAlumno', [AlumnoController::class, 'nuevo'])->name('alumno.nuevo');
-
+ 
 
 //RUTAS ASIGNATURA
 Route::get('/crearAsignatura', function () {

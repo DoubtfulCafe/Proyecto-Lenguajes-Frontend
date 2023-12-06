@@ -23,7 +23,7 @@
                     <input name="capacidad" value="{{$data->capacidad}}" type="number" class="form-control shadow-none" id="capacidad">
                 </div>
                 <div class="my-3">
-                    <button class="btn btn-form" type="submit">Crear!</button>    
+                    <button class="btn btn-form" type="submit">Actualizar!</button>    
                 </div>
             </div>
         </form>

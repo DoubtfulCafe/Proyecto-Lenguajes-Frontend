@@ -47,13 +47,9 @@ class AulaController extends Controller
      $client = new Client();
  
      $urlBase = 'localhost:8090/api/aulas/eliminar';
-     $reqURL = '{$urlBase}/{$id}';
- 
-     $req = $client->delete($reqURL);
- 
-     $res = $client->getBody()->getContents();
- 
-     $data = json_decode($res, true);
+     $reqURL = "{$urlBase}/{$id}";
+     $request = $client->delete($reqURL);
+    return redirect()->route('aula.all');
    }
 
    public function editar($id){

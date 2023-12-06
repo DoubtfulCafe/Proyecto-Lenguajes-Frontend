@@ -15,7 +15,7 @@
       <th scope="col">Secciones</th>
       <th scope="col">Acciones</th>
     </tr>
-  </thead>
+  </thead> 
   <tbody>
     @foreach ($data as $item)
     <tr>
@@ -25,7 +25,11 @@
       <td>{{$item['asignaturaRequisito']}}</td>
       <td>{{$item['seccion']}}</td>
       <td><div class="container">
-        <a href="{{route('asignatura.delete',$item['codigoAsignatura'])}}" class="btn btn-sm btn-danger">Eliminar</a>
+        <form action="{{ route('asignatura.delete',$item['codigoAsignatura']) }}" method="POST">
+          @csrf
+          @method('DELETE')
+          <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+      </form>
         <a href="{{route('asignatura.editar',$item['codigoAsignatura'])}}" class="btn btn-sm btn-primary">Actualizar</a>
       </div></td>
     </tr>
