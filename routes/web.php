@@ -31,14 +31,15 @@ Route::post('/nuevoAlumno', [AlumnoController::class, 'nuevo'])->name('alumno.nu
  
 
 //RUTAS ASIGNATURA
+/*
 Route::get('/crearAsignatura', function () {
     return view('forms.asignaturaForm');
 })->name('asignatura.crear');
-/*
 Route::get('/asignatura', function () {
     return view('tables.asignaturaTabla');
 })->name('asignatura.all');
 */
+Route::get('/crearAsignatura', [AsignaturaController::class, 'crearConTipoAulas'])->name('asignatura.crear');
 Route::get('/asignatura', [AsignaturaController::class, 'listar'])->name('asignatura.all');
 Route::delete('/eliminarAsignatura/{id}', [AsignaturaController::class, 'eliminar'])->name('asignatura.delete');
 Route::put('/actualizarAsignatura/{id}', [AsignaturaController::class, 'actualizar'])->name('asignatura.update');
@@ -47,14 +48,15 @@ Route::post('/nuevaAsignatura', [AsignaturaController::class, 'nuevo'])->name('a
 
 
 //RUTAS AULA
+/*
 Route::get('/crearAula', function () {
     return view('forms.aulaForm');
 })->name('aula.crear');
-/*
 Route::get('/aula', function () {
     return view('tables.aulaTabla');
 })->name('aula.all');
 */
+Route::get('/crearAula', [AulaController::class, 'crearConTipoAulas'])->name('aula.crear');
 Route::get('/aula', [AulaController::class, 'listar'])->name('aula.all');
 Route::delete('/eliminarAula/{id}', [AulaController::class, 'eliminar'])->name('aula.delete');
 Route::put('/actualizarAula/{id}', [AulaController::class, 'actualizar'])->name('aula.update');
@@ -93,7 +95,7 @@ Route::put('/actualizarTipoAula/{id}', [TipoAulaController::class, 'actualizar']
 Route::get('/editarTipoAula/{id}', [TipoAulaController::class, 'editar'])->name('tipoAula.editar');
 Route::post('/nuevoTipoAula', [TipoAulaController::class, 'nuevo'])->name('tipoAula.nuevo');
 
-
+ 
 //RUTAS SECCION
 Route::get('/seccion', function () {
     return view('tables.seccionTabla');

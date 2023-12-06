@@ -8,27 +8,68 @@ use GuzzleHttp\Client;
 class AulaController extends Controller
 {
     public function nuevo(Request $req) {
+            $url = "localhost:8090/api/tipoaulas/obtener/{$req->input('tipoAula')}";
+            $client = new Client();
+
+            $res = $client->get($url);
+
+            $aulas = json_decode($res->getBody()->getContents(), true);
+            //RECOGER EDIFICIOS
+            $url2 = "localhost:8090/api/edificios/obtener/{$req->input('codigoEdificio')}";
+            $client2 = new Client();
+
+            $res2 = $client2->get($url2);
+
+            $edificios = json_decode($res2->getBody()->getContents(), true);
+
             //Prepare the request elements
             $data = [
+              'codigoAula' => $req->input('codigoAula'),
+              'edificio' => [
+                'codigoEdificio' => $edificios['codigoEdificio'],
+                'nombre' => $edificios['nombre'],
+                'cantidadAulas' => $edificios['cantidadAulas'],
+              ],
+              'tipoAula' => [
+                'idTipoAula' => $aulas['idTipoAula'],
+                'descripcion' => $aulas['descripcion'],
+              ],
               'capacidad' => $req->input('capacidad'),
-              'codigoedificio' => $req->input('codigoEdificio'),
-              'idtipoaula' => $req->input('tipoAula'),
-              'codigoaula' => $req->input('codigoAula'),
             ];
+
             $client = new Client();
-            $url = 'localhost:8090/api/aulas/guardar';
+            $urlCrear = 'localhost:8090/api/aulas/guardar';
             $headers = [
               'Content-Type' => 'application/json',
               'Accept' => 'application/json',
             ];
+            //dd($data);
             //Structure the request
-            $res = $client->post($url,[
+            $resp = $client->post($urlCrear,[
               'headers' => $headers,
               'json' => $data,
             ]);
             
             //dd($res);
             return redirect()->route('aula.all');
+          }
+
+          public function crearConTipoAulas(){
+            $url = 'localhost:8090/api/tipoaulas/todos';
+            $client = new Client();
+
+            $res = $client->get($url);
+
+            $data = json_decode($res->getBody()->getContents(), true);
+            //RECOGER EDIFICIOS
+            $url2 = 'localhost:8090/api/edificios/todos';
+            $client2 = new Client();
+
+            $res2 = $client2->get($url2);
+
+            $edificios = json_decode($res2->getBody()->getContents(), true);
+
+            return view('forms.aulaForm', compact('data', 'edificios'));
           }
 
       public function listar(){ 
@@ -53,30 +94,65 @@ class AulaController extends Controller
    }
 
    public function editar($id){
+    $url = 'localhost:8090/api/tipoaulas/todos';
+            $client = new Client();
+
+            $res = $client->get($url);
+
+            $aulas = json_decode($res->getBody()->getContents(), true);
+            //RECOGER EDIFICIOS
+            $url2 = 'localhost:8090/api/edificios/todos';
+            $client2 = new Client();
+
+            $res2 = $client2->get($url2);
+
+            $edificios = json_decode($res2->getBody()->getContents(), true);
+
     $client = new Client();
     
     $urlBase = 'localhost:8090/api/aulas/obtener';
-    $reqURL = '{$urlBase}/{$id}';
+    $reqURL = "{$urlBase}/{$id}";
 
     $req = $client->get($reqURL);
 
     $data = json_decode($req->getBody(), true);
 
-    return view('updateForms.aulaForm', compact('data','id'));
+    return view('updateForms.aulaForm', compact('data','id', 'aulas', 'edificios'));
 }
  
    public function actualizar(Request $req, $id)
    {
-     $client = new Client();
- 
-     $urlBase = 'localhost:8090/api/aulas/actualizar';
-     $reqURL = '{$urlBase}/{$id}';
- 
-     $data = [
-      'codigoEdificio' => $req->input('codigoEdificio'),
-      'tipoAula' => $req->input('tipoAula'),
+    $url = "localhost:8090/api/tipoaulas/obtener/{$req->input('tipoAula')}";
+    $client1 = new Client();
+
+    $res = $client1->get($url);
+
+    $aulas = json_decode($res->getBody()->getContents(), true);
+    //RECOGER EDIFICIOS
+    $url2 = "localhost:8090/api/edificios/obtener/{$req->input('codigoEdificio')}";
+    $client2 = new Client();
+    
+    $res2 = $client2->get($url2);
+
+    $edificios = json_decode($res2->getBody()->getContents(), true);
+    //Prepare the request elements
+    $data = [
+      'edificio' => [
+        'codigoEdificio' => $edificios['codigoEdificio'],
+        'nombre' => $edificios['nombre'],
+        'cantidadAulas' => $edificios['cantidadAulas'],
+      ],
+      'tipoAula' => [
+        'idTipoAula' => $aulas['idTipoAula'],
+        'descripcion' => $aulas['descripcion'],
+      ],
       'capacidad' => $req->input('capacidad'),
-     ];
+    ];
+    //dd($data);
+
+     $urlBase = 'localhost:8090/api/aulas/actualizar';
+     $reqURL = "{$urlBase}/{$id}";
+ 
      $client = new Client();
      $url = '';
      $headers = [
@@ -90,6 +166,6 @@ class AulaController extends Controller
        'json' => $data,
      ]);
  
-     return $res->getBody()->getContents();
-   }
+     return redirect()->route('aula.all');
+    }
 }

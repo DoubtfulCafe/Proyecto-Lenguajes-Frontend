@@ -9,9 +9,8 @@
   <thead>
     <tr>
       <th scope="col">Código Aula</th>
-      <th scope="col">Código Edificio</th>
-      <th scope="col">Edificio Perteneciente</th>
-      <th scope="col">Tipo Aula</th>
+      <th scope="col">Edificio</th>
+      <th scope="col">Tipo de Aula</th>
       <th scope="col">Capacidad</th>
       <th scope="col">Acciones</th>
     </tr>
@@ -20,15 +19,15 @@
     @foreach ($data as $item)
     <tr>
       <th scope="row">{{$item['codigoAula']}}</th>
-      <td>{{$item['edificio']}}</td>
-      <td>{{$item['tipoAula']}}</td>
+      <td>{{$item['edificio']['nombre']}}</td>
+      <td>{{$item['tipoAula']['descripcion']}}</td>
       <td>{{$item['capacidad']}}</td>
       <td><div class="container">
         <form action="{{ route('aula.delete',$item['codigoAula']) }}" method="POST">
           @csrf
           @method('DELETE')
           <button type="submit" class="btn btn-sm btn-danger">Delete</button>
-      </form>
+        </form>
         <a href="{{route('aula.editar',$item['codigoAula'])}}" class="btn btn-sm btn-primary">Actualizar</a>
       </div></td>
     </tr>

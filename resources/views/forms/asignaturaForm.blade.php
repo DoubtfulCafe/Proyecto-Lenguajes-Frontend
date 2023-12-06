@@ -18,9 +18,10 @@
             <div class="mb-3">
                 <label for="tipoAula">Tipo Aula</label>
                 <select class="shadow-none form-control" name="tipoAula" id="tipoAula">
-                    <option value="1">Tipo1</option>
-                    <option value="2">Tipo2</option>
-                </select>
+                    @foreach ($data as $item)
+                    <option value="{{$item['idTipoAula']}}">{{$item['descripcion']}}</option>
+                    @endforeach
+                </select>   
             </div>
             <div class="mb-3">
                 <label for="requisito">Requisito</label>

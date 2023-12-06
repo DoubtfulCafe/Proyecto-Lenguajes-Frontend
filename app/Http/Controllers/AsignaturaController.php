@@ -55,6 +55,18 @@ class AsignaturaController extends Controller
     return redirect()->route('asignatura.all');
 
   }
+
+  public function crearConTipoAulas(){
+    $url = 'localhost:8090/api/tipoaulas/todos';
+    $client = new Client();
+
+    $res = $client->get($url);
+
+    $data = json_decode($res->getBody()->getContents(), true);
+
+    return view('forms.asignaturaForm', compact('data'));
+  }
+  
   public function editar($id){
     $client = new Client();
     

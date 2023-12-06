@@ -12,14 +12,19 @@
                     <input name="codigoAula" type="text" class="form-control shadow-none" id="codigoAula">
                 </div>
                 <div class="mb-3">
-                    <label for="codigoEdificio">Código Edificio</label>
-                    <input name="codigoEdificio" type="text" class="form-control shadow-none" id="codigoEdificio">
+                    <label for="codigoEdificio">Edificio</label>
+                    <select class="shadow-none form-control" name="codigoEdificio" id="codigoEdificio">
+                        @foreach ($edificios as $item)
+                        <option value="{{$item['codigoEdificio']}}">{{$item['nombre']}}</option>
+                        @endforeach
+                    </select> 
                 </div>
                 <div class="mb-3">
                     <label for="tipoAula">Tipo Aula</label>
                     <select class="shadow-none form-control" name="tipoAula" id="tipoAula">
-                        <option value="1">Tipo1</option>
-                        <option value="2">Tipo2</option>
+                        @foreach ($data as $item)
+                        <option value="{{$item['idTipoAula']}}">{{$item['descripcion']}}</option>
+                        @endforeach
                     </select>      
                 </div>
                 <div class="mb-3">
